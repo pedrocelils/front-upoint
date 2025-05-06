@@ -261,6 +261,7 @@ function DashboardCard({
 }
 
 // Clock icon component
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Clock(props: any) {
   return (
     <svg
