@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+Algoritmo "Algoritmo"   //Onde se coloca o nome do algoritmo
+
+Var // Inicio das declarações das variaveis
+mensagem: caractere // variavel mensagem do tipo caractere
+
+Inicio // Parte do algoritmo que será executada
+
+      mensagem <- "Olá, mundo" //mensagem está recebendo 'Olá mundo'
+
+      escreval(mensagem)//escrevendo a mensagem na tela
+
+Fimalgoritmo //Finalizando a execução do algoritmo

@@ -1,103 +1,181 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [nome, setNome] = useState("")
+  const [email, setEmail] = useState("")
+  const [telefone, setTelefone] = useState("")
+  const [formEnviado, setFormEnviado] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+
+    const data = { nome, email, telefone }
+
+    try {
+      const response = await fetch("/api/contato", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) throw new Error("Erro ao enviar")
+
+      setFormEnviado(true)
+    } catch (error) {
+      console.error(error)
+      alert("Erro ao enviar o formulário.")
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+      <header className="container mx-auto px-4 py-4">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </div>
+            <span className="text-2xl font-bold text-blue-600">Upoint</span>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="font-medium text-blue-600">Home</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">About Us</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Services</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Features</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Project</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Clients</Link>
+            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Contact Us</Link>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-4">
+            <Link href="#" className="text-gray-500 hover:text-blue-600"><Facebook size={18} /></Link>
+            <Link href="#" className="text-gray-500 hover:text-blue-600"><Twitter size={18} /></Link>
+            <Link href="#" className="text-gray-500 hover:text-blue-600"><Instagram size={18} /></Link>
+            <Link href="#" className="text-gray-500 hover:text-blue-600"><Linkedin size={18} /></Link>
+          </div>
+
+          <button className="md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main className="container mx-auto px-4 py-16">
+        <div className="grid gap-12 md:grid-cols-2 items-center">
+          <div className="space-y-6">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+              O futuro da jornada de trabalho
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+              Controle de ponto sem burocracia,<br /> feito para empresas que valorizam pessoas
+            </h1>
+
+            <p className="text-gray-600 md:text-lg max-w-2xl">
+              Automatize o registro de ponto, economize tempo com o cálculo de horas e tenha uma visão
+              completa da jornada dos seus colaboradores — tudo em um só lugar, com tecnologia de verdade.
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="text-sm text-gray-600">Já possui conta?</div>
+              <Link
+                href="/login"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Entrar
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            {!formEnviado ? (
+              <div className="space-y-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mt-2">
+                  Fale com um especialista
+                </h2>
+
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Nome
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      E-mail
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Telefone
+                    </label>
+                    <input
+                      id="telefone"
+                      type="text"
+                      value={telefone}
+                      onChange={(e) => setTelefone(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Enviar
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <div className="text-center text-xl font-semibold text-green-600">
+                Entraremos em contato!
+              </div>
+            )}
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
