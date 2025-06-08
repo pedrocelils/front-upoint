@@ -92,7 +92,7 @@ export default function EmpresaPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty },
+    formState: { errors},
     reset,
   } = useForm<EmpresaFormData>({
     resolver: zodResolver(empresaSchema),

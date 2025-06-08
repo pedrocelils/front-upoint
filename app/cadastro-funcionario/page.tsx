@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useEffect, useState } from "react"
@@ -117,7 +118,7 @@ export default function FuncionarioPage() {
     register,
     handleSubmit,
     control,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, isDirty },
     reset,
     setError,
     clearErrors,

@@ -1,22 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { Loader2, FileText, Filter, ChevronRight, Check, ChevronsUpDown } from "lucide-react"
+import { Loader2, FileText, Filter, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+
+
 
 export default function GerarRelatorio() {
   const [loading, setLoading] = useState(false)
-  const [nomeUsuario, setNomeUsuario] = useState("")
+  const [nomeUsuario] = useState("")
   const [dataInicial, setDataInicial] = useState("")
   const [dataFinal, setDataFinal] = useState("")
   const [usuarios, setUsuarios] = useState<string[]>([])
   const [loadingUsuarios, setLoadingUsuarios] = useState(false)
-  const [openCombobox, setOpenCombobox] = useState(false)
+  //const [openCombobox, setOpenCombobox] = useState(false)
 
   const buscarUsuarios = useCallback(async (termo: string) => {
     if (termo.length < 2) {

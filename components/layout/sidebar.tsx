@@ -221,7 +221,7 @@ export function Sidebar({ activePage, onPageChange, sidebarOpen, onToggleSidebar
           </div>
         </nav>
         <div className="absolute bottom-0 left-0 right-0 border-t border-blue-100 p-4">
-          <UserProfileMenu />
+          <UserProfileMenu nome={"avatar"} email={""} />
         </div>
       </div>
     </>

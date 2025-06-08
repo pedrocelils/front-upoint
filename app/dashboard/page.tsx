@@ -41,7 +41,8 @@ export default function HomeScreen() {
       case "relatorios-historico":
         return <RelatoriosComponent />
       case "configuracoes-localizacao":
-        return <ConfiguracoesLocalizacao  />
+       // return <ConfiguracoesLocalizacao  />
+       return "teste"
       default:
         return <DashboardContent totalFuncionarios={totalFuncionarios} totalRegistros={totalRegistros} />
     }
