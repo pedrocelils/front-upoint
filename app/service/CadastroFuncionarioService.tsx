@@ -8,6 +8,8 @@ export interface FuncionarioDTO {
   nome: string
   email: string
   telefone: string
+  departamento: string
+  cargo: string
   empresaId: string
   logradouro: string
   numero: string

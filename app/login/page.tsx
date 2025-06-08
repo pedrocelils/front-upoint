@@ -23,7 +23,7 @@ export default function LoginScreen() {
       .login(login, senha)
       .then((response) => {
         localStorage.setItem("TOKEN_FRONTEND", response.data.token)
-        router.push("/home")
+        router.push("/dashboard")
       })
       .catch(() => {
         setErroLogin(true)

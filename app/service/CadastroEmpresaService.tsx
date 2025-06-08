@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Configurando a instância do Axios
 export const axiosInstance = axios.create({
-  baseURL: "https://upoint-deploy-jpa-production.up.railway.app", // URL base do backend
+  baseURL: "https://upoint-deploy-jpa-production.up.railway.app/", // URL base do backend
   withCredentials: true, // Inclui cookies e credenciais automaticamente
 });
 
@@ -23,6 +23,10 @@ export class CadastrarEmpresaService {
       logradouro: string;
       numero: string;
       uf: string;
+    },
+    localizacaoData: {
+      latitude: number;
+      longitude: number;
     }
   ) {
     const token = localStorage.getItem("TOKEN_FRONTEND");
@@ -37,6 +41,7 @@ export class CadastrarEmpresaService {
         "/empresa",
         {
           ...empresaData,
+          ...localizacaoData,
           endereco: enderecoData,
         },
         {

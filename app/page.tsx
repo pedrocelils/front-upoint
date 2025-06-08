@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export default function Home() {
   const [nome, setNome] = useState("")
@@ -52,23 +52,6 @@ export default function Home() {
               </svg>
             </div>
             <span className="text-2xl font-bold text-blue-600">Upoint</span>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="font-medium text-blue-600">Home</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">About Us</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Services</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Features</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Project</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Clients</Link>
-            <Link href="#" className="font-medium text-gray-500 hover:text-blue-600">Contact Us</Link>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <Link href="#" className="text-gray-500 hover:text-blue-600"><Facebook size={18} /></Link>
-            <Link href="#" className="text-gray-500 hover:text-blue-600"><Twitter size={18} /></Link>
-            <Link href="#" className="text-gray-500 hover:text-blue-600"><Instagram size={18} /></Link>
-            <Link href="#" className="text-gray-500 hover:text-blue-600"><Linkedin size={18} /></Link>
           </div>
 
           <button className="md:hidden">
