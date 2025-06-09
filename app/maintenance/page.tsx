@@ -201,7 +201,7 @@ export default function RegistrosPorUsuario() {
     try {
       console.log("🗑️ Deletando registro com UUID:", registro.id)
 
-      const response = await fetch(`http://localhost:8071/editar-registros/${registro.id}`, {
+      const response = await fetch(`https://upoint-deploy-jpa-production.up.railway.app/editar-registros/${registro.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -268,9 +268,9 @@ export default function RegistrosPorUsuario() {
       }
 
       console.log("📤 RegistroPatchDTO enviado:", updateDTO)
-      console.log("🌐 URL:", `http://localhost:8071/editar-registros/${registro.id}`)
+      console.log("🌐 URL:", `https://upoint-deploy-jpa-production.up.railway.app/editar-registros/${registro.id}`)
 
-      const response = await fetch(`http://localhost:8071/editar-registros/${registro.id}`, {
+      const response = await fetch(`https://upoint-deploy-jpa-production.up.railway.app/editar-registros/${registro.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
